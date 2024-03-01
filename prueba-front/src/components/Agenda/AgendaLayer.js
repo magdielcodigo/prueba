@@ -7,9 +7,11 @@ let {id} = JSON.parse(localStorage.getItem('log')) || {log:false}
 
 const AgendaLayer = ()=>{
     const [agenda, setAgenda] = useState([])
-    const [update, setUpdate] = useState(0)
+    const [update, setUpdate] = useState(false)
 
     useEffect(()=>{
+        let {id} = JSON.parse(localStorage.getItem('log')) || {log:false}
+
         const getData = async()=>{
             const headers = {
                 'Authorization':'token cba5f582bbaa81e73c6080c2b22a1ac59230aee5'
@@ -19,10 +21,10 @@ const AgendaLayer = ()=>{
             setAgenda(resp.data.agenda)
         }
         getData()
-        return()=>{
-            
+        return ()=>{
+            setUpdate(false)
         }
-    },[])
+    },[update])
 
     const {nombre, direccion, user, telefono, onInputChange, onResetForm} = useForm({
         nombre: '', 
@@ -46,7 +48,7 @@ const AgendaLayer = ()=>{
             return
         }
         Swal.fire(resp.data.msg,'','success')
-        setUpdate(update + 1)
+        setUpdate(true)
     }
 
     const deleteRecord = async(persona) =>{
@@ -63,7 +65,7 @@ const AgendaLayer = ()=>{
             return
         }
         Swal.fire(resp.data.msg,'','success')
-        setUpdate(update + 1)
+        setUpdate(true)
     }
 
     return (

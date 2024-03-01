@@ -91,12 +91,12 @@ class CreatePeopleSerializer(serializers.Serializer):
 
     def validate(self, data):
         user = User.objects.filter(id=data.get('user')).first()
-        try:
-            AgendaModel(user=user,nombre=data.get('nombre'),direccion=data.get('direccion'),telefono=data.get('telefono')).save()
-        except:
-            data['success'] = False
-            data['msg'] = "Ha ocurrido un error al guardar"
-            return data
+       
+        AgendaModel(user=user,nombre=data.get('nombre'),direccion=data.get('direccion'),telefono=data.get('telefono')).save()
+        # except:
+        #     data['success'] = False
+        #     data['msg'] = "Ha ocurrido un error al guardar"
+        #     return data
         data['success'] = True
         data['msg'] = 'Se ha guardado correctamente'
         return data

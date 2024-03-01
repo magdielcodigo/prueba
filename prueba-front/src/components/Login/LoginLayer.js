@@ -10,7 +10,9 @@ const LoginLayer = ()=>{
     useEffect(()=>{
         let {log} = JSON.parse(localStorage.getItem('log')) || {log:false}
         if(log){
-           navegate('/Agenda') 
+           navegate('/Agenda',{
+            replace:true
+        }) 
         }
     },[])
 
