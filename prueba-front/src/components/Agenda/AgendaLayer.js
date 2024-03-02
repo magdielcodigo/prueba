@@ -50,6 +50,7 @@ const AgendaLayer = ()=>{
             return
         }
         Swal.fire(resp.data.msg,'','success')
+
         onResetForm()
         setUpdate(true)
     }
@@ -103,7 +104,7 @@ const AgendaLayer = ()=>{
             </table>
 
             
-             <ModelComponent onSubmit={onSubmit} onInputChange={onInputChange} />
+             <ModelComponent onSubmit={onSubmit} onInputChange={onInputChange} nombre={nombre} direccion={direccion} telefono={telefono} />
         </div>
         
     )

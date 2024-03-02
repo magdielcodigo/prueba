@@ -25,7 +25,11 @@ const SignInLayer = () =>{
 
     const onSubmitForm = async(e) => {
         e.preventDefault()
-
+        if(!name || !lastname || !user || !password){
+            Swal.fire('Llene todo el formulario','','error')
+            onResetForm()
+            return
+        }
         const headers = {
             'Authorization':'token cba5f582bbaa81e73c6080c2b22a1ac59230aee5'
         }
@@ -59,19 +63,19 @@ const SignInLayer = () =>{
                     <hr/>
                     <form onSubmit={onSubmitForm}>
                         <div className="form-floating mb-3">
-                            <input type="text" className="form-control" id="floatingInputName" name="name" onChange={onInputChange} placeholder="Name"/>
+                            <input type="text" className="form-control" id="floatingInputName" name="name" onChange={onInputChange} placeholder="Name" value={name}/>
                             <label htmlFor="floatingInputName">Name</label>
                         </div>
                         <div className="form-floating mb-3">
-                            <input type="text" className="form-control" id="floatingInputLastName" name="lastname" onChange={onInputChange} placeholder="Last Name"/>
+                            <input type="text" className="form-control" id="floatingInputLastName" name="lastname" onChange={onInputChange} placeholder="Last Name" value={lastname}/>
                             <label htmlFor="floatingInputLastName">Last Name</label>
                         </div>
                         <div className="form-floating mb-3">
-                            <input type="email" className="form-control" id="floatingInput" name="user" onChange={onInputChange} placeholder="name@example.com"/>
+                            <input type="email" className="form-control" id="floatingInput" name="user" onChange={onInputChange} placeholder="name@example.com" value={user}/>
                             <label htmlFor="floatingInput">Email address</label>
                         </div>
                         <div className="form-floating">
-                            <input type="password" className="form-control" id="floatingPassword" name="password" onChange={onInputChange} placeholder="Password" />
+                            <input type="password" className="form-control" id="floatingPassword" name="password" onChange={onInputChange} placeholder="Password" value={password} />
                             <label htmlFor="floatingPassword">Password</label>
                         </div>
                         <button className="btn btn-dark mt-3 w-100">Save</button>
