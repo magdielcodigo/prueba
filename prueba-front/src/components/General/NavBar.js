@@ -28,7 +28,7 @@ import { Link, Outlet, useNavigate } from "react-router-dom"
                                             <p className="text-white mt-2">{nombre}</p>  
                                         </li>
                                         <li className="nav-item">
-                                            <button className="btn btn-danger" onClick={LogOut}>Cerrar sesión</button>
+                                            <button className="btn btn-danger" onClick={()=>LogOut()}>Cerrar sesión</button>
                                         </li>
                                     </>
                                 ):(
