@@ -37,12 +37,12 @@ const AgendaLayer = ()=>{
 
     const onSubmit = async(e) =>{
         e.preventDefault()
-
+        let {id} = JSON.parse(localStorage.getItem('log')) || {log:false}
         const headers = {
             'Authorization':'token cba5f582bbaa81e73c6080c2b22a1ac59230aee5'
         }
         const data = {
-            nombre, direccion, user, telefono
+            nombre, direccion, telefono, user:id
         }
         const resp = await apiBack.post('/agendaCreate/',data,{headers})
         if(!resp.data.success){
@@ -56,6 +56,7 @@ const AgendaLayer = ()=>{
     }
 
     const deleteRecord = async(persona) =>{
+        let {id} = JSON.parse(localStorage.getItem('log')) || {log:false}
         const headers = {
             'Authorization':'token cba5f582bbaa81e73c6080c2b22a1ac59230aee5'
         }
